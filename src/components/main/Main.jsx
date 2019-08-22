@@ -1,16 +1,22 @@
 import React from 'react';
 
-const Main = (props) => {
-  const {title, children} = props;
+import NavBar from './nav/NavBar';
+
+import * as S from './styles';
+
+const Main = props => {
+  const { title, children } = props;
 
   return (
-    <div>
-      <main>
-        <h1>{title}</h1>
+    <>
+      <NavBar />
+
+      <S.Main>
+        <h2>{title}</h2>
         {children}
-      </main>
-    </div>
-  )
-}
+      </S.Main>
+    </>
+  );
+};
 
 export default Main;

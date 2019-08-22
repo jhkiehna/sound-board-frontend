@@ -4,10 +4,10 @@ import Main from '../../components/main/Main';
 
 const Home = () => {
   return (
-    <Main title="Sound Board">
-      <h2>This is the home page</h2>
+    <Main title="Home">
+      <p>This is the home page</p>
     </Main>
-  )
-}
+  );
+};
 
 export default Home;

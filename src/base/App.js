@@ -1,14 +1,16 @@
-import React from "react";
-import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
+import React from 'react';
+import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
+import CssBaseline from '@material-ui/core/CssBaseline';
 
-import Home from "../pages/home/Home";
+import Home from '../pages/home/Home';
 
-import CssBaseline from "@material-ui/core/CssBaseline";
+import GlobalStyle from './globalStyle';
 
 function App() {
   return (
     <div className="App">
       <CssBaseline />
+      <GlobalStyle />
       <Router>
         <Switch>
           <Route exact path="/" component={Home} />
