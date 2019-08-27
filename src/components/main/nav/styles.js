@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import { Link } from 'react-router-dom';
-import Button from '@material-ui/core/Button';
+import { Link, NavLink } from 'react-router-dom';
 
 export const MaterialToolbar = styled(Toolbar)`
   background-color: var(--secondary-bg-color);
@@ -23,8 +22,14 @@ export const RouterLink = styled(Link)`
   }
 `;
 
-export const MaterialButton = styled(Button)`
-  :hover {
+export const NavigationLink = styled(NavLink)`
+  color: var(--primary-text-color);
+  font-weight: bold;
+  text-decoration: none;
+  margin-left: 2em;
+
+  .matched,
+  &:hover {
     color: var(--primary-color);
   }
 `;

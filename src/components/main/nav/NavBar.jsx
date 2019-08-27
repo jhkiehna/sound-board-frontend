@@ -4,15 +4,21 @@ import AppBar from '@material-ui/core/AppBar';
 import * as S from './styles';
 
 const NavLinks = () => {
-  const isLoggedIn = false;
+  const isLoggedIn = true;
 
   if (isLoggedIn)
     return (
       <>
-        <S.MaterialButton color="inherit">Boards</S.MaterialButton>
-        <S.MaterialButton color="inherit">Clips</S.MaterialButton>
+        <S.NavigationLink to="/boards" activeClassName="matched">
+          Boards
+        </S.NavigationLink>
+        <S.NavigationLink to="/clips" activeClassName="matched">
+          Clips
+        </S.NavigationLink>
         <S.Divider />
-        <S.MaterialButton color="inherit">Logout</S.MaterialButton>
+        <S.NavigationLink to="/logout" activeClassName="matched">
+          Logout
+        </S.NavigationLink>
       </>
     );
 
