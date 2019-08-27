@@ -12,7 +12,7 @@ const Main = props => {
       <NavBar />
 
       <S.Main>
-        <h2>{title}</h2>
+        <h2 style={{ textAlign: 'center' }}>{title}</h2>
         {children}
       </S.Main>
     </>

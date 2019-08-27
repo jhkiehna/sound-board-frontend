@@ -5,4 +5,5 @@ export const Main = styled.main`
   color: #fff;
   min-height: 100vh;
   padding-top: 5em;
+  text-align: center;
 `;
