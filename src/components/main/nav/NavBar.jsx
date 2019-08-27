@@ -3,6 +3,22 @@ import AppBar from '@material-ui/core/AppBar';
 
 import * as S from './styles';
 
+const NavLinks = () => {
+  const isLoggedIn = false;
+
+  if (isLoggedIn)
+    return (
+      <>
+        <S.MaterialButton color="inherit">Boards</S.MaterialButton>
+        <S.MaterialButton color="inherit">Clips</S.MaterialButton>
+        <S.Divider />
+        <S.MaterialButton color="inherit">Logout</S.MaterialButton>
+      </>
+    );
+
+  return <S.Placeholder>Create Something</S.Placeholder>;
+};
+
 const NavBar = () => {
   return (
     <nav>
@@ -11,7 +27,8 @@ const NavBar = () => {
           <S.MaterialTypography>
             <S.RouterLink to="/">SoundBoard</S.RouterLink>
           </S.MaterialTypography>
-          <S.MaterialButton color="inherit">Login</S.MaterialButton>
+
+          <NavLinks />
         </S.MaterialToolbar>
       </AppBar>
     </nav>

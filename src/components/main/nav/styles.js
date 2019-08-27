@@ -19,12 +19,24 @@ export const RouterLink = styled(Link)`
   text-decoration: none;
 
   :hover {
-    color: #f00;
+    color: var(--primary-color);
   }
 `;
 
 export const MaterialButton = styled(Button)`
   :hover {
-    color: #f00;
+    color: var(--primary-color);
   }
+`;
+
+export const Divider = styled.div`
+  border-right: 2px solid var(--primary-text-color);
+  margin: 0 2em;
+  width: 2px;
+  height: 1em;
+`;
+
+export const Placeholder = styled.p`
+  font-style: italic;
+  color: #555;
 `;
