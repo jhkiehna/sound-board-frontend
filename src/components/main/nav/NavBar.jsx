@@ -4,7 +4,7 @@ import AppBar from '@material-ui/core/AppBar';
 import * as S from './styles';
 
 const NavLinks = () => {
-  const isLoggedIn = true;
+  const isLoggedIn = false;
 
   if (isLoggedIn)
     return (
