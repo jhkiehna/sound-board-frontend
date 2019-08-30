@@ -3,16 +3,17 @@ import { ArrowDownward } from '@material-ui/icons';
 
 import Main from '../../components/main/Main';
 import Login from './Login';
+import Register from './Register';
 
 const Home = () => {
   return (
     <Main title="Login">
       <Login />
 
-      <h3>Or create an account right here</h3>
+      <h3>Or create an account below</h3>
       <ArrowDownward />
 
-      <div>Sign up placeholder</div>
+      <Register />
     </Main>
   );
 };
