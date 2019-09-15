@@ -1,8 +1,15 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
+
+import { postRequest } from '../../utils/api';
+import Storage from '../../utils/storage';
+import { AuthContext } from '../../utils/AuthContext';
 
 import * as S from './styles';
 
 const Login = () => {
+  const [authenticated, setAuthenticated] = React.useState(AuthContext);
+
   const [formValues, setFormValues] = React.useState({
     username: '',
     password: '',
@@ -15,21 +22,27 @@ const Login = () => {
   const handleSubmit = async event => {
     event.preventDefault();
 
-    await fetch('http://localhost:8000/auth/sign-in', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-      },
-      body: JSON.stringify({
-        name: formValues.username,
-        password: formValues.password,
-      }),
-    })
-      .then(response => response.json())
-      .then(json => console.log(json));
+    postRequest('http://localhost:8000/auth/sign-in', {
+      name: formValues.username,
+      password: formValues.password,
+    }).then(result => {
+      if (result.errors) {
+        console.error(result.errors);
+        return;
+      }
+
+      Storage.login({
+        username: result.data.name,
+        apiToken: result.data.api_token,
+      });
+
+      setAuthenticated(true);
+    });
   };
+
+  if (authenticated) {
+    return <Redirect to="/boards" />;
+  }
 
   return (
     <S.Form noValidate autoComplete="off" onSubmit={handleSubmit}>

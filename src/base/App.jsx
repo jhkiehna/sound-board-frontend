@@ -2,18 +2,19 @@ import React from 'react';
 import { Switch, Route, Redirect, BrowserRouter as Router } from 'react-router-dom';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
+import { AuthProvider, AuthContext } from '../utils/AuthContext';
 import Home from '../pages/home/Home';
 
 import GlobalStyle from './globalStyle';
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
-  const isLoggedIn = false;
+  const [authenticated, setAuthenticated] = React.useContext(AuthContext);
 
   return (
     <Route
       {...rest}
       render={props =>
-        isLoggedIn ? (
+        authenticated ? (
           <Component {...props} />
         ) : (
           <Redirect
@@ -31,15 +32,17 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 function App() {
   return (
     <div className="App">
-      <CssBaseline />
-      <GlobalStyle />
-      <Router>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <PrivateRoute exact path="/boards" component={() => <div>Boards</div>} />
-          <PrivateRoute exact path="/clips" component={() => <div>Clips</div>} />
-        </Switch>
-      </Router>
+      <AuthProvider>
+        <CssBaseline />
+        <GlobalStyle />
+        <Router>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <PrivateRoute exact path="/boards" component={() => <div>Boards</div>} />
+            <PrivateRoute exact path="/clips" component={() => <div>Clips</div>} />
+          </Switch>
+        </Router>
+      </AuthProvider>
     </div>
   );
 }
